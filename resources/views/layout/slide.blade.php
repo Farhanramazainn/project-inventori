@@ -1,4 +1,12 @@
-<aside id="left-panel" class="left-panel">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
 
         <div class="navbar-header">
@@ -26,8 +34,8 @@
                 <li class="@yield('pemasok')">
                     <a href="{{ url('/pemasok') }}"> <i class="menu-icon fa fa-truck"></i>Daftar Gudang</a>
                 </li>
-                <!-- /.menu-title -->
-                <h3 class="menu-title">Data Barang</h3><!-- /.menu-title -->
+                
+                <h3 class="menu-title">Data Barang</h3>
                 <li class="@yield('kategori')">
                     <a href="{{ url('/kategori') }}"> <i class="menu-icon fa fa-tag"></i>Daftar Kategori</a>
                 </li>
@@ -73,7 +81,32 @@
                 </li>
                 @endif
             </ul>
-        </div><!-- /.navbar-collapse -->
+        </div>
     </nav>
 </aside>
+
+<style>
+            @font-face {
+                font-family: 'telkomselBold';
+                font-style: 'normal';
+                font-weight: '100';
+                src: url('{{ asset('fonts/TelkomselBatikSans-Bold.ttf') }}');
+            }
+        
+            body {
+                font-family: 'telkomselBold';
+            }
+
+            .navbar {
+                font-family: 'telkomselBold';
+            }
+
+            .h3 {
+                font-family: 'telkomselBold';
+            }
+        
+        </style>
+</body>
+</html>
+
 

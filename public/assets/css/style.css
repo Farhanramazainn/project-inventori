@@ -10,6 +10,21 @@
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Tags: html, themplate, Sufee-Admin
 --------------------------------------------------------- */
+
+@font-face {
+  font-family: 'telkomselBold';
+  font-style: 'normal';
+  font-weight: '100';
+  src: url(../fonts/TelkomselBatikSans-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'telkomsel';
+  font-style: 'normal';
+  font-weight: '100';
+  src: url(../fonts/TelkomselBatikSans-Regular.ttf);
+}
+
 .bg-flat-color-1 {
   background: #20a8d8; }
 
@@ -35,7 +50,7 @@
 body {
   background: #f1f2f7;
   display: table;
-  font-family: 'Open Sans' sans-serif;
+  font-family: 'telkomsel';
   font-size: 16px;
   width: 100%; }
 
@@ -111,6 +126,7 @@ aside.left-panel {
   background: #272c33;
   border-radius: 0;
   border: none;
+  font-family: 'telkomselBold';
   display: block;
   margin: 0;
   margin-bottom: 100px;
@@ -122,12 +138,12 @@ aside.left-panel {
   .navbar .navbar-brand {
     border-bottom: 1px solid #4e4e52;
     color: #f1f2f7 !important;
-    font-family: 'Open Sans';
     font-size: 22px;
     float: none;
     line-height: 50px;
     margin: 0;
     text-align: left;
+    font-family: 'telkomselBold';
     text-transform: capitalize;
     display: block;
     min-height: 69px;
@@ -147,7 +163,6 @@ aside.left-panel {
     color: #9496a1;
     clear: both;
     display: block;
-    font-family: 'Open Sans';
     font-size: 14px;
     font-weight: 700;
     line-height: 50px;
@@ -166,7 +181,6 @@ aside.left-panel {
         background: none !important;
         color: #c8c9ce !important;
         display: inline-block;
-        font-family: 'Open Sans';
         font-size: 14px;
         line-height: 30px;
         padding: 10px 0;
@@ -185,7 +199,6 @@ aside.left-panel {
           font-size: 14px; }
         .navbar .navbar-nav li > a .badge {
           border-radius: 0;
-          font-family: 'Open Sans';
           font-weight: 600;
           float: right;
           margin: 6px 0 0 0;
@@ -197,7 +210,6 @@ aside.left-panel {
           .navbar .navbar-nav li.menu-item-has-children a:before {
             content: "\f105";
             color: #c8c9ce;
-            font-family: 'Fontawesome';
             font-size: 16px;
             position: absolute;
             top: 10px;
@@ -251,7 +263,6 @@ aside.left-panel {
   background: #a9d86e;
   border-radius: 50%;
   color: #fff;
-  font-family: 'Open Sans';
   font-size: 9px;
   font-weight: 700;
   float: right;
@@ -525,7 +536,6 @@ header .form-inline {
   .user-area .user-menu {
     background: #fff;
     border: none;
-    font-family: 'Open Sans';
     left: inherit !important;
     right: 0;
     top: 55px !important;
@@ -555,7 +565,6 @@ header .form-inline {
     background: #d9534f;
     border-radius: 50%;
     color: #fff;
-    font-family: 'Open Sans';
     font-size: 9px;
     font-weight: 700;
     float: right;
