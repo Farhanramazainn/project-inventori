@@ -13,24 +13,57 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index()
-    {
-        $barang = Barang::count('id_barang');
-        $barang_masuk = BarangMasuk::count('id_barang_masuk');
-        $barang_keluar = BarangKeluar::count('id_barang_keluar');
-        $total_approval  = Approval::count('id');
+{
+    $barang = Barang::count('id_barang');
+    $barang_masuk = BarangMasuk::count('id_barang_masuk');
+    $barang_keluar = BarangKeluar::count('id_barang_keluar');
+    $total_approval  = Approval::count('id');
 
-        $data_masuk = DB::table('barang_masuk') // Ganti 'barang' dengan nama tabel yang sesuai
-          ->select(DB::raw('DATE(tanggal) as date'), DB::raw('COUNT(*) as count'))
-          ->groupBy('date')
-          ->get();
-        
-          $data_keluar = DB::table('barang_keluar')
-            ->select(DB::raw('DATE(tanggal) as date'), DB::raw('COUNT(*) as count'))
-            ->groupBy('date')
-            ->get();
-              
-        return view('dashboard', compact('barang', 'barang_masuk', 'barang_keluar', 'total_approval','data_masuk','data_keluar'));
-    }
+    // Sum of 'jumlah' grouped by 'pemasok_id'
+    $jumlah_masuk_dari_pemasok = BarangMasuk::with('pemasok')
+    ->select(DB::raw('DATE(tanggal) as date'), 'pemasok_id', DB::raw('SUM(jumlah) as total'))
+    ->where('pemasok_id', 1) // Menyaring pemasok_id yang bernilai 1
+    ->groupBy('pemasok_id', DB::raw('DATE(tanggal)'))
+    ->get();
+
+    $jumlah_masuk_dari_office = BarangMasuk::with('pemasok')
+    ->select(DB::raw('DATE(tanggal) as date'), 'pemasok_id', DB::raw('SUM(jumlah) as total'))
+    ->where('pemasok_id', 2) // Menyaring pemasok_id yang bernilai 1
+    ->groupBy('pemasok_id', DB::raw('DATE(tanggal)'))
+    ->get();
+
+    $jumlah_keluar_dari_office_front = BarangKeluar::with('divisi')
+    ->select(DB::raw('DATE(tanggal) as date'), 'divisi_id', DB::raw('SUM(jumlah) as total'))
+    ->where('divisi_id', 3) 
+    ->groupBy('divisi_id', DB::raw('DATE(tanggal)'))
+    ->get();
+
+
+    $jumlah_keluar_dari_office_back = BarangKeluar::with('divisi')
+    ->select(DB::raw('DATE(tanggal) as date'), 'divisi_id', DB::raw('SUM(jumlah) as total'))
+    ->where('divisi_id', 5) 
+    ->groupBy('divisi_id', DB::raw('DATE(tanggal)'))
+    ->get();
+
+    // dd($jumlah_keluar_dari_office);
+
+
+    // Getting data for 'barang_masuk' grouped by date
+    $data_masuk = DB::table('barang_masuk')
+        ->select(DB::raw('DATE(tanggal) as date'), DB::raw('COUNT(*) as count'))
+        ->groupBy('date')
+        ->get();
+    
+    // Getting data for 'barang_keluar' grouped by date
+    $data_keluar = DB::table('barang_keluar')
+        ->select(DB::raw('DATE(tanggal) as date'), DB::raw('COUNT(*) as count'))
+        ->groupBy('date')
+        ->get();
+
+        // dd($data_keluar);
+
+    return view('dashboard', compact('barang', 'barang_masuk', 'barang_keluar', 'total_approval', 'jumlah_masuk_dari_pemasok','jumlah_masuk_dari_office','jumlah_keluar_dari_office_front','jumlah_keluar_dari_office_back', 'data_masuk', 'data_keluar'));
+}
 
     public function laporan()
     {
