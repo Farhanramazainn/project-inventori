@@ -115,7 +115,7 @@ class BarangKeluarController extends Controller
             'id_barang' => 'required|array',
             'jml' => 'required|array',
             'satuan' => 'required|array',
-            'keterangan' => 'nullable|array'
+            'keterangan' => 'nullable|string'
         ]);
 
         $kode_bk = $request->kode_bk;

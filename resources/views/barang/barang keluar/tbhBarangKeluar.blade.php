@@ -95,7 +95,7 @@
                 nilai += '<input type="hidden" value="' + data.data_bk.satuan + '" id="satuan[]" name="satuan[]">';
                 nilai += '</td>';
                 nilai += '<td>'; // Kolom untuk keterangan
-                nilai += '<input type="text" class="form-control" id="keterangan[]" name="keterangan[]" placeholder="Masukkan Keterangan">';
+                nilai += '<input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">';
                 nilai += '</td>';
                 nilai += '<td>';
                 nilai += '<button class="btn btn-sm btn-danger hapus"><i class="fa fa-trash"></i></button>';

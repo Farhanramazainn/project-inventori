@@ -22,6 +22,7 @@ class CreateApprovalsTable extends Migration
             $table->string('satuan');
             $table->date('tanggal');
             $table->string('keterangan');
+            $table->string('keterangan_approval');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->text('keterangan')->nullable();
             $table->timestamps();

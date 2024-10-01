@@ -20,6 +20,7 @@
                             <th>Jumlah</th>
                             <th>Tanggal</th>
                             <th>Keterangan</th>
+                            <th>keterangan_approval</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -33,6 +34,7 @@
                             <td>{{ $item->jumlah }} {{ $item->satuan }}</td>
                             <td>{{ $item->tanggal }}</td>
                             <td>{{ $item->keterangan }}</td>
+                            <td>{{ $item->keterangan_approval }}</td>
                             <td>
                                 @if ($item->status === 'pending')
                                     <span class="badge badge-warning">Pending</span>
@@ -70,8 +72,8 @@
                                                     @method('PATCH')
                                                     <div class="modal-body">
                                                         <div class="form-group">
-                                                            <label for="rejection_reason">Rejection Reason</label>
-                                                            <textarea id="rejection_reason" name="rejection_reason" class="form-control" required></textarea>
+                                                            <label for="keterangan_approval">Rejection Reason</label>
+                                                            <textarea id="keterangan_approval" name="keterangan_approval" class="form-control" required></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
