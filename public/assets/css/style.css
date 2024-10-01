@@ -11,12 +11,6 @@
 * Tags: html, themplate, Sufee-Admin
 --------------------------------------------------------- */
 
-@font-face {
-  font-family: 'telkomselBold';
-  font-style: 'normal';
-  font-weight: '100';
-  src: url(../fonts/TelkomselBatikSans-Bold.ttf);
-}
 
 @font-face {
   font-family: 'telkomsel';
@@ -126,7 +120,7 @@ aside.left-panel {
   background: #272c33;
   border-radius: 0;
   border: none;
-  font-family: 'telkomselBold';
+  font-family: 'telkomsel';
   display: block;
   margin: 0;
   margin-bottom: 100px;
@@ -143,7 +137,7 @@ aside.left-panel {
     line-height: 50px;
     margin: 0;
     text-align: left;
-    font-family: 'telkomselBold';
+    font-family: 'telkomsel';
     text-transform: capitalize;
     display: block;
     min-height: 69px;

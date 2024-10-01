@@ -108,29 +108,51 @@ class DashboardController extends Controller
         // Callback untuk mengisi data ke dalam CSV
         $callback = function() use($dari, $sampai, $jenis) {
             $file = fopen('php://output', 'w');
-            
+
+
             // Header CSV
             if ($jenis == 'masuk') {
-                fputcsv($file, ['ID Barang Masuk', 'Kode Barang', 'Nama Barang', 'Jumlah', 'Tanggal']);
+                // Menambahkan judul tabel
+                fputcsv($file, ['Laporan Barang Masuk']);
+                fputcsv($file, ['Kode Kategori', 'Gudang', 'Nama Barang', 'Jumlah', 'Tanggal Masuk']);
+                
                 $data_masuk = BarangMasuk::where('tanggal', '>=', $dari)
                             ->where('tanggal', '<=', $sampai)
                             ->get();
                 foreach ($data_masuk as $item) {
-                    fputcsv($file, [$item->id_barang_masuk, $item->barang->kode_barang, $item->barang->nama, $item->jumlah, $item->tanggal]);
+                    fputcsv($file, [
+                        $item->kode_bm, 
+                        $item->pemasok->nama, 
+                        $item->nama, 
+                        $item->jumlah, 
+                        date('d F Y', strtotime($item->tanggal))
+                    ]);
                 }
+
+                
             } else {
-                fputcsv($file, ['ID Barang Keluar', 'Kode Barang', 'Nama Barang', 'Jumlah', 'Tanggal']);
+                // Menambahkan judul tabel
+                fputcsv($file, ['Laporan Barang Keluar']);
+                fputcsv($file, ['Kode Barang', 'Nama Divisi', 'Nama Barang', 'Jumlah', 'Keterangan','Tanggal']);
+                
                 $data_keluar = BarangKeluar::where('tanggal', '>=', $dari)
                             ->where('tanggal', '<=', $sampai)
                             ->get();
                 foreach ($data_keluar as $item) {
-                    fputcsv($file, [$item->id_barang_keluar, $item->barang->kode_barang, $item->barang->nama, $item->jumlah, $item->tanggal]);
+                    fputcsv($file, [
+                        $item->kode_bk, 
+                        $item->divisi->nama_divisi, 
+                        $item->barang->nama, 
+                        $item->jumlah,
+                        $item->keterangan, 
+                        $item->tanggal
+                    ]);
                 }
             }
-
+        
             fclose($file);
         };
-
+        
         return response()->stream($callback, 200, $headers);
     }
 }

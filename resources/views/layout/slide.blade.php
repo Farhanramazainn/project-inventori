@@ -87,22 +87,22 @@
 
 <style>
             @font-face {
-                font-family: 'telkomselBold';
+                font-family: 'telkomsel';
                 font-style: 'normal';
                 font-weight: '100';
                 src: url('{{ asset('fonts/TelkomselBatikSans-Bold.ttf') }}');
             }
         
             body {
-                font-family: 'telkomselBold';
+                font-family: 'telkomsel';
             }
 
             .navbar {
-                font-family: 'telkomselBold';
+                font-family: 'telkomsel';
             }
 
             .h3 {
-                font-family: 'telkomselBold';
+                font-family: 'telkomsel';
             }
         
         </style>

@@ -71,7 +71,7 @@ class ApprovalController extends Controller
         $approval = Approval::find($id);
         if ($approval) {
             $approval->status = 'rejected';
-            $approval->keterangan = $request->input('keterangan'); // Menyimpan keterangan
+            $approval->keterangan_approval = $request->input('keterangan_approval'); // Menyimpan keterangan
             $approval->save();
         }
 

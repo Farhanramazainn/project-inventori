@@ -10,7 +10,7 @@ class Approval extends Model
     use HasFactory;
 
     protected $fillable = [
-        'kode_bk', 'divisi_id', 'barang_id', 'jumlah', 'satuan', 'tanggal', 'status', 'keterangan'
+        'kode_bk', 'divisi_id', 'barang_id', 'jumlah', 'satuan', 'tanggal', 'status', 'keterangan','keterangan_approval'
     ];
 
 
