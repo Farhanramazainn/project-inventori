@@ -20,7 +20,6 @@
                             <th>Jumlah</th>
                             <th>Tanggal</th>
                             <th>Keterangan</th>
-                            <th>keterangan_approval</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -34,7 +33,6 @@
                             <td>{{ $item->jumlah }} {{ $item->satuan }}</td>
                             <td>{{ $item->tanggal }}</td>
                             <td>{{ $item->keterangan }}</td>
-                            <td>{{ $item->keterangan_approval }}</td>
                             <td>
                                 @if ($item->status === 'pending')
                                     <span class="badge badge-warning">Pending</span>
@@ -42,6 +40,29 @@
                                     <span class="badge badge-success">Approved</span>
                                 @else
                                     <span class="badge badge-danger">Rejected</span>
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#approvalDetailsModal{{ $item->id }}">
+                                        <i class="fa fa-info-circle"></i> Details
+                                    </button>
+
+                                    <!-- Modal untuk menampilkan keterangan approval -->
+                                    <div class="modal fade" id="approvalDetailsModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="approvalDetailsModalLabel{{ $item->id }}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="approvalDetailsModalLabel{{ $item->id }}">Approval Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p><strong>Rejection Reason:</strong> {{ $item->keterangan_approval }}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endif
                             </td>
                             <td>

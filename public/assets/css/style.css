@@ -357,7 +357,7 @@ body.open .navbar .navbar-brand.hidden {
   transition: all .35s ease; }
 
 .right-panel header.header {
-  background: #fff;
+  background: #272c33;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
   clear: both;
   display: inline-block;
